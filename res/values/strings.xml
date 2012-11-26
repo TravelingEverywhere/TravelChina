@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">畅游中国</string>
+    
+    <string name="main_home">首页</string>
+    <string name="main_relation">好友</string>
+    <string name="main_square">广场</string>
+    <string name="main_more">更多</string>
+    
+
+</resources>
