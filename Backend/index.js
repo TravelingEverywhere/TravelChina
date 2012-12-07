@@ -19,6 +19,7 @@ function creatHttpServer( request, responder ){
     } else if( 'city' == type ){
         resData = getCityData( params );
     }
+    console.log( ' - got a request, type: ' + type );
     responder.writeHead( 200, { 'Content-Type': 'text/html' });
     responder.end( JSON.stringify( resData ) );
 }
@@ -49,9 +50,14 @@ function getCityData( params ){
         page   = params.page,
         placesData = datas[ 'places' ], 
         placesArr  = cityid.split( '_' ),
-        places = Object.keys( datas[ 'citys' ][ placesArr[ 0 ] ][ placesArr[ 1 ] ] ),
-        resData= [];
-    debugger;
+        places, redData;
+    if( placesArr.length != 2 ){
+        console.log( ' - 目前仅支持二级省市,输入的省市不全!' );
+        return;
+    }
+    places  = Object.keys( datas[ 'citys' ][ placesArr[ 0 ] ][ placesArr[ 1 ] ] );
+    resData = [];
+
     for( var i in places ){
         resData.push( placesData[ places[ i ] ] );
     }
